@@ -47,7 +47,7 @@
     <string name="agree">Agree</string>
     <string name="disagree">Disagree</string>
 
-    <string name="skip">skip</string>
+    <string name="skip">Skip</string>
     <string name="warning">Warning</string>
     <string name="error">Error</string>
 
@@ -1943,6 +1943,7 @@
     <!--  -->
 
     <!-- Snackbar hints -->
+    <string name="hint">Hint</string>
     <string name="got_it">Got it</string>
     <string name="preference_description_hints">Enable to show hints</string>
     <string name="preference_title_enable_hints">Show hints </string>

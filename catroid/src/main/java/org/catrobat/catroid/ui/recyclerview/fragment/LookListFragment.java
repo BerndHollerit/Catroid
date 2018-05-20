@@ -40,12 +40,12 @@ import org.catrobat.catroid.content.Scene;
 import org.catrobat.catroid.content.Sprite;
 import org.catrobat.catroid.ui.controller.BackpackListManager;
 import org.catrobat.catroid.ui.controller.PocketPaintExchangeHandler;
+import org.catrobat.catroid.ui.dialogs.hint.HintIntroDialog;
 import org.catrobat.catroid.ui.recyclerview.adapter.LookAdapter;
 import org.catrobat.catroid.ui.recyclerview.backpack.BackpackActivity;
 import org.catrobat.catroid.ui.recyclerview.controller.LookController;
 import org.catrobat.catroid.ui.recyclerview.dialog.NewLookDialogFragment;
 import org.catrobat.catroid.ui.recyclerview.dialog.RenameDialogFragment;
-import org.catrobat.catroid.utils.SnackbarUtil;
 import org.catrobat.catroid.utils.ToastUtil;
 
 import java.io.IOException;
@@ -69,7 +69,7 @@ public class LookListFragment extends RecyclerViewFragment<LookData> {
 
 	@Override
 	protected void initializeAdapter() {
-		SnackbarUtil.showHintSnackbar(getActivity(), R.string.hint_looks);
+		HintIntroDialog.showHint(this, R.style.stage_dialog, R.string.hint_looks);
 		sharedPreferenceDetailsKey = "showDetailsLookList";
 		List<LookData> items = ProjectManager.getInstance().getCurrentSprite().getLookList();
 		adapter = new LookAdapter(items);

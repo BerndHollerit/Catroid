@@ -68,7 +68,7 @@ import org.catrobat.catroid.formulaeditor.UserList;
 import org.catrobat.catroid.formulaeditor.UserVariable;
 import org.catrobat.catroid.ui.BottomBar;
 import org.catrobat.catroid.ui.dialogs.FormulaEditorComputeDialog;
-import org.catrobat.catroid.ui.dialogs.FormulaEditorIntroDialog;
+import org.catrobat.catroid.ui.dialogs.hint.FormulaEditorIntroDialog;
 import org.catrobat.catroid.ui.recyclerview.dialog.NewStringDialogFragment;
 import org.catrobat.catroid.ui.recyclerview.dialog.dialoginterface.NewItemInterface;
 import org.catrobat.catroid.ui.recyclerview.fragment.CategoryListFragment;

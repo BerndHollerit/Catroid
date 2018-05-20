@@ -48,7 +48,7 @@ public final class SnackbarUtil {
 
 	public static final String SHOWN_HINT_LIST = "shown_hint_list";
 
-	public static void showHintSnackbar(final Activity activity, @StringRes int resourceId) {
+	public static void showHintSnackbar(final Activity activity, @StringRes final int resourceId) {
 		final String messageId = activity.getResources().getResourceName(resourceId);
 		final String message = activity.getString(resourceId);
 
@@ -61,7 +61,7 @@ public final class SnackbarUtil {
 					.withOnClickListener(new SnackBar.OnMessageClickListener() {
 						@Override
 						public void onMessageClick(Parcelable token) {
-							setHintShown(activity, messageId);
+							setHintShown(activity, resourceId);
 						}
 					})
 					.withDuration(SnackBar.PERMANENT_SNACK);
@@ -82,10 +82,11 @@ public final class SnackbarUtil {
 		}
 	}
 
-	public static void setHintShown(Activity activity, String messageId) {
+	public static void setHintShown(Activity activity, int messageId) {
+		String message = activity.getResources().getResourceName((messageId));
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
 		Set<String> hintList = getStringSetFromSharedPreferences(activity);
-		hintList.add(messageId);
+		hintList.add(message);
 		prefs.edit().putStringSet(SnackbarUtil.SHOWN_HINT_LIST, hintList).commit();
 	}
 
@@ -101,5 +102,10 @@ public final class SnackbarUtil {
 	private static Set<String> getStringSetFromSharedPreferences(Context context) {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		return new HashSet<>(prefs.getStringSet(SnackbarUtil.SHOWN_HINT_LIST, new HashSet<String>()));
+	}
+
+	public static boolean shouldHintBeShown(Activity activity, int messageId) {
+		String message = activity.getResources().getResourceName((messageId));
+		return !wasHintAlreadyShown(activity, message) && areHintsEnabled(activity);
 	}
 }
